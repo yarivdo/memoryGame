@@ -1,0 +1,23 @@
+#headline {
+    font-family: serif;
+    color: darkblue;
+    font-size: 60px;
+    align-items: center;
+    text-align: center;
+}
+
+#userInput {
+    padding:20px;
+    margin: 20px;    
+}
+
+#displayDigits {
+    padding: 20px;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    font-size: 160px;
+    color: darkslateblue;
+    
+    
+}
