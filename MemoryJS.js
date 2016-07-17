@@ -72,6 +72,9 @@ function displayInputElements() {
     $('#inputBox').val('');
     $('#userInput').show();
     $('#displayDigits').hide();
+    $('#inputBox').select();
+    
+    
 }
 
 function checkAnswer() {
