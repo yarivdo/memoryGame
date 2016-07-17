@@ -1,11 +1,10 @@
 body {
     background-color: #accecd;
-    font-family: sans-serif;
+    font-family:sans-serif;
 }
 
 #titleArea {
     height: 25%;
-    color: blue;
     font-size: 30px;
     text-align: center;
     height: 15%;
@@ -13,7 +12,7 @@ body {
 }
 
 #headline {
-    color: white;
+    color: #8a151b;
     height: 100%;
     width: 100%;
     font-weight: normal;
@@ -53,7 +52,6 @@ body {
     text-align: center;
     font-size: 160%;
     font-weight: bolder;
-    font-family:cursive;
     letter-spacing: 2px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 8px;
@@ -71,14 +69,13 @@ body {
     border-color: #585340;
     color: white;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    font-size: 110%;
+    font-size: 100%;
     font-weight: bolder;
 }
 
 #messageArea {
     height: 10%;
     color: #585340;
-    font-family: sans-serif;
     align-content: center;
     text-align: center;
     font-size: 130%;
