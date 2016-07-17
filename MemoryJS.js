@@ -10,9 +10,9 @@ var numOfSuccess = 0; // Game logic: if you succeed 2 consecutive in the same Di
 $(document).ready(function () {
 
     $('#btnSubmit').on("click", checkAnswer);
-   
+
     startRound(3);
-    
+
 });
 
 
@@ -32,23 +32,23 @@ function startRound(numDigits) {
 
     // This is a self-invoking, recursive function. 
     //   http://patrickmuff.ch/blog/2014/03/12/for-loop-with-delay-in-javascript/
-    
-    
+
+
     (function next() {
 
-            if (digitCounter++ >= numDigits) {
-                $('#displayDigits').fadeOut(500);
+        if (digitCounter++ >= numDigits) {
+            $('#displayDigits').fadeOut(500);
 
-                displayInputElements();
-                return;
-            }
-            setTimeout(function () {
-                $('#displayDigits').html(digitsToDisplay[digitCounter]);
-                next();
-            }, 1400);
-        })();
+            displayInputElements();
+            return;
+        }
+        setTimeout(function () {
+            $('#displayDigits').html(digitsToDisplay[digitCounter]);
+            next();
+        }, 1400);
+    })();
 
-    }
+}
 
 
 
@@ -77,30 +77,33 @@ function displayInputElements() {
 function checkAnswer() {
     numOfRounds += 1;
     var userAnswer = $('#inputBox').val();
-    
-    if (numOfRounds == 1){
-        
-        if(userAnswer == currentDigitsStringInStringFormat){  // RIGHT
+
+    if (numOfRounds == 1) {
+
+        if (userAnswer == currentDigitsStringInStringFormat) { // RIGHT
             console.log("Right");
-            numOfSuccess +=1;
+            showMessage('correct');
+            numOfSuccess += 1;
             minSucceed = numberOfDigits;
             console.log("min Success achieved, and it is: " + minSucceed + " digits");
             startRound(numberOfDigits);
-            
+
         } else { // WRONG
             console.log("WRONG");
-            numOfErrors +=1
+            showMessage('incorrect');
+            numOfErrors += 1
             startRound(numberOfDigits);
         }
     }
-    
-    if(numOfRounds == 2) {
-        
-        if (userAnswer == currentDigitsStringInStringFormat) {  // RIGHT
+
+    if (numOfRounds == 2) {
+
+        if (userAnswer == currentDigitsStringInStringFormat) { // RIGHT
             console.log("Right");
-            numOfSuccess +=1;
-            
-            if(numOfSuccess == 1) {
+            showMessage('correct');
+            numOfSuccess += 1;
+
+            if (numOfSuccess == 1) {
                 minSucceed = numberOfDigits;
                 console.log("min Success achieved, and it is: " + minSucceed + " digits");
             }
@@ -108,29 +111,40 @@ function checkAnswer() {
                 maxSucceed = numberOfDigits;
                 console.log("MAX Success achieved, and it is: " + minSucceed + " digits");
             }
-            
+
             // Now for the next round
             numOfSuccess = 0;
             numOfErrors = 0;
-            numberOfDigits +=1;
+            numberOfDigits += 1;
             numOfRounds = 0;
-            startRound(numberOfDigits);          
-            
+            startRound(numberOfDigits);
+
         } else { // WRONG
             console.log("WRONG");
-            numOfErrors +=1
-            
+            showMessage('incorrect');
+            numOfErrors += 1
+
             if (numOfErrors == 2) {
                 alert("This is the end of the test");
-                
-            } else{
+
+            } else {
                 // Now for the next round
                 numOfSuccess = 0;
                 numOfErrors = 0;
                 numOfRounds = 0;
-                numberOfDigits +=1;
+                numberOfDigits += 1;
                 startRound(numberOfDigits);
             }
         }
+    }
+}
+
+function showMessage(response) {
+    if(response == 'correct') {
+        $('#message').show().html("Correct !").fadeOut(900);
+    }
+    
+    if(response == 'incorrect') {
+        $('#message').show().html("Incorrect :(").fadeOut(900);
     }
 }
